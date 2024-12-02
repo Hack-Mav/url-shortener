@@ -7,6 +7,9 @@ env_variables:
   GOOGLE_CLOUD_PROJECT: genericissuer
   REDIS_HOST: redis-13327.c330.asia-south1-1.gce.redns.redis-cloud.com
   REDIS_PORT: "13327"
+  USERNAME: default
+  PASSWORD: gnbFTZJdKx0F33K7WPjqkVVafdYM6nKL
+
 
 automatic_scaling:
   target_cpu_utilization: 0.65

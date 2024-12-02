@@ -20,8 +20,8 @@ func ConnectCache() *redis.Client {
 
 	client := redis.NewClient(&redis.Options{
 		Addr:     redisAddr,
-		Username: "default",
-		Password: "gnbFTZJdKx0F33K7WPjqkVVafdYM6nKL",
+		Username: os.Getenv("USERNAME"),
+		Password: os.Getenv("PASSWORD"),
 	})
 
 	_, err := client.Ping(Ctx).Result()
