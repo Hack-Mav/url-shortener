@@ -1,5 +1,5 @@
 service: url-shortener
-runtime: go120
+runtime: go121
 
 instance_class: F1  # Specify instance class (F1 is free-tier eligible)
 

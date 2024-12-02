@@ -2,7 +2,7 @@ package models
 
 type URLMapping struct {
 	ShortID string `datastore:"short_id"`
-	LongURL string `datastore:"long_url"`
+	LongURL string `datastore:"long_url,noindex"`
 }
 
 type ShortenRequest struct {

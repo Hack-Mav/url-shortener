@@ -3,6 +3,7 @@ package config
 import (
 	"context"
 	"log"
+	"os"
 
 	"github.com/go-redis/redis/v8"
 )
@@ -13,10 +14,8 @@ var Ctx = context.Background()
 type RedisClient = redis.Client
 
 func ConnectCache() *redis.Client {
-	// redisHost := os.Getenv("REDIS_HOST")
-	redisHost := "redis-13327.c330.asia-south1-1.gce.redns.redis-cloud.com"
-	// redisPort := os.Getenv("REDIS_PORT")
-	redisPort := "13327"
+	redisHost := os.Getenv("REDIS_HOST")
+	redisPort := os.Getenv("REDIS_PORT")
 	redisAddr := redisHost + ":" + redisPort
 
 	client := redis.NewClient(&redis.Options{
