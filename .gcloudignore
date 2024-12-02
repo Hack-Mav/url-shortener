@@ -1,1 +1,5 @@
 .app.yaml
+
+.gcloudignore
+.git
+.gitignore
