@@ -15,7 +15,7 @@ func main() {
 	// Create Gin router
 	r := gin.Default()
 	gin.SetMode(gin.ReleaseMode)
-	
+
 	// Define routes
 	r.POST("/shorten", handlers.ShortenURL(dsClient, cache))
 	r.GET("/:short_id", handlers.RedirectURL(dsClient, cache))

@@ -3,6 +3,7 @@ package handlers
 import (
 	"context"
 	"net/http"
+	"time"
 	"url-shortener/config"
 	"url-shortener/models"
 
@@ -31,10 +32,25 @@ func RedirectURL(dsClient *datastore.Client, cache *config.RedisClient) gin.Hand
 				return
 			}
 
-			longURL = mapping.LongURL
+			// Check if the URL has expired
+			if time.Now().After(mapping.ExpiryDate) {
+				// Remove the expired URL from the Datastore
+				err := dsClient.Delete(ctx, key)
+				if err != nil {
+					c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete expired URL"})
+					return
+				}
+
+				// Also remove from Redis cache if it exists
+				cache.Del(ctx, shortID)
+
+				c.JSON(http.StatusGone, gin.H{"error": "This URL has expired and has been removed"})
+				return
+			}
 
 			// Cache the result in Redis
-			cache.Set(ctx, shortID, longURL, 0)
+			cache.Set(ctx, shortID, mapping.LongURL, 0)
+			longURL = mapping.LongURL
 		} else if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Cache error"})
 			return
