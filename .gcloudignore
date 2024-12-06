@@ -3,3 +3,28 @@
 .gcloudignore
 .git
 .gitignore
+
+
+# Go build artifacts
+*.exe
+*.out
+*.a
+*.so
+*.test
+
+# Editor configurations
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Log files
+*.log
+
+# Test and coverage files
+*.test
+*.cover
+
+# Temporary files
+tmp/
+node_modules/

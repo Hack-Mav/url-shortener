@@ -1,1 +1,23 @@
 app.yaml
+
+# Go build artifacts
+*.exe
+*.out
+*.a
+*.so
+*.test
+
+# Vendor directory (if using Go modules)
+vendor/
+
+# IDE/editor configurations
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Log files
+*.log
+
+# Compiled binary
+myapp
