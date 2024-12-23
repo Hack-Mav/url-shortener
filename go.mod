@@ -1,4 +1,4 @@
-module github/Hack-Mav/url-shortener
+module github.com/Hack-Mav/url-shortener
 
 go 1.23.0
 

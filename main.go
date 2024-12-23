@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github/Hack-Mav/url-shortener/config"
-	"github/Hack-Mav/url-shortener/handlers"
+	"github.com/Hack-Mav/url-shortener/config"
+	"github.com/Hack-Mav/url-shortener/handlers"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
