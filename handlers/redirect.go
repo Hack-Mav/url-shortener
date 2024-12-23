@@ -2,10 +2,10 @@ package handlers
 
 import (
 	"context"
+	"github/Hack-Mav/url-shortener/config"
+	"github/Hack-Mav/url-shortener/models"
 	"net/http"
 	"time"
-	"url-shortener/config"
-	"url-shortener/models"
 
 	"cloud.google.com/go/datastore"
 	"github.com/gin-gonic/gin"
