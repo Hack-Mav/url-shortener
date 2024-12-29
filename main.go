@@ -28,6 +28,7 @@ func main() {
 	// Define routes
 	r.POST("/shorten", handlers.ShortenURL(dsClient, cache))
 	r.GET("/:short_id", handlers.RedirectURL(dsClient, cache))
+	r.POST("/history", handlers.FetchHistory(dsClient, cache))
 
 	// Start the server
 	r.Run(":8080") // Default is localhost:8080
