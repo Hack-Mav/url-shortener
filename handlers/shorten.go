@@ -22,6 +22,8 @@ func ShortenURL(dsClient *datastore.Client, cache *config.RedisClient) gin.Handl
 			return
 		}
 
+		creationTime, _ := time.Parse("2006-01-02", time.Now().String())
+
 		// Parse the expiration date if provided
 		var expiryDate time.Time
 		if request.ExpiryDate != "" {
@@ -48,6 +50,7 @@ func ShortenURL(dsClient *datastore.Client, cache *config.RedisClient) gin.Handl
 			ShortID:    shortID,
 			LongURL:    request.LongURL,
 			ExpiryDate: expiryDate,
+			CreatedAt:  creationTime,
 		}
 		_, err := dsClient.Put(ctx, key, &mapping)
 		if err != nil {
