@@ -21,7 +21,8 @@ func FetchHistory(dsClient *datastore.Client, cache *config.RedisClient) gin.Han
 
 		// Prepare your query. Make sure the kind name matches what you have in Datastore.
 		// Example: "ShortURL" is the datastore kind name.
-		query := datastore.NewQuery("ShortURL").Order("-createdAt")
+		query := datastore.NewQuery("URLMapping")
+		// .Order("-created_at")
 
 		// This slice will hold the fetched results.
 		var results []models.URLMapping
@@ -31,9 +32,6 @@ func FetchHistory(dsClient *datastore.Client, cache *config.RedisClient) gin.Han
 		if err != nil {
 			// Handle error.
 			fmt.Println("Error fetching history:", err)
-			// Return an error response to the client.
-			// You can customize the error message as needed.
-			// For example, you can return a 500 Internal Server Error.
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch history"})
 			return
 		}
